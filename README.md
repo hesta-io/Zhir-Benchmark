@@ -6,15 +6,15 @@ This repo contains a test suite to measure accuracy of our models, pre-processin
 
 Areas we are now focusing on include:
 
-| Area                             | Description                                                  |
-| -------------------------------- | ------------------------------------------------------------ |
-| [Clean Scan](./data/clean-scans) | This helps us see how our models perform when we use proper hardware to scan the documents. This use case is very important for business because they usually don't mind using proper hardware (e.g. a normal scanner/printer) to scan the documents. Performance mostly depends on the models, and on the ability of pre-processing scripts not to mess up the already good images. |
-| [Screenshots](./data/screenshots)     | Screenshots of images. This use case is important for extracting text from PDFs whose encoding has been corrupted. Performance mostly depends on the models, and on the ability of pre-processing scripts not to mess up the already good images. |
-| [Phones](./data/phones)               | Contains images that are taken by a cell phone. The images might need quite a bit of pre-processing for Tesseract to be able to do a good job. Performance depends on the pre-processing scripts. |
-| [Posters](./data/posters)             | Images that have colorful or complex backgrounds. Examples: Book covers, posters, memes, infographics, etc... |
-| [Edge Cases](./data/edge-cases)       | Images that measure edge cases. Examples: White text on black background. |
-| Tables                           | TBD                                                          |
-| Two-columns                      | TBD                                                          |
+| Area                              | Description                                                                                                                                                                                                                                                                                                                                                                          |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Clean Scan](./data/clean-scans)  | This helps us see how our models perform when we use proper hardware to scan the documents. This use case is very important for business because they usually don't mind using proper hardware (e.g. a normal scanner/printer) to scan the documents. Performance mostly depends on the models, and on the ability of pre-processing scripts not to mess up the already good images. |
+| [Screenshots](./data/screenshots) | Screenshots of images. This use case is important for extracting text from PDFs whose encoding has been corrupted. Performance mostly depends on the models, and on the ability of pre-processing scripts not to mess up the already good images.                                                                                                                                    |
+| [Phones](./data/phones)           | Contains images that are taken by a cell phone. The images might need quite a bit of pre-processing for Tesseract to be able to do a good job. Performance depends on the pre-processing scripts.                                                                                                                                                                                    |
+| [Posters](./data/posters)         | Images that have colorful or complex backgrounds. Examples: Book covers, posters, memes, infographics, etc...                                                                                                                                                                                                                                                                        |
+| [Edge Cases](./data/edge-cases)   | Images that measure edge cases. Examples: White text on black background.                                                                                                                                                                                                                                                                                                            |
+| Tables                            | TBD                                                                                                                                                                                                                                                                                                                                                                                  |
+| Two-columns                       | TBD                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ## Format
 
@@ -27,20 +27,24 @@ Example: `s-1.jpg` and `s-1.txt`
 
 ## How to run tests
 
-### Run tesseract on all images:
+**Note:** We only support Linux and Mac because [ocreval](https://github.com/eddieantonio/ocreval) is not available for Windows 
 
 ```
-python3 ./src/tess.py source dest languages [--tessdata]
+python3 ./src/eval.py source dest languages [--tessdata]
 ```
 
 Examples:
 
 ```
-python3 ./src/tess.py ./data ./out ckb
+python3 ./src/eval.py ./data ./out ckb
 ```
 
 ```
-python3 ./src/tess.py ./data ./out ckb --tessdata ./tessdata
+python3 ./src/eval.py ./data ./out ckb+eng
+```
+
+```
+python3 ./src/eval.py ./data ./out ckbLayer1.35234
 ```
 
 ## Resources

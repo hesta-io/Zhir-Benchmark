@@ -21,8 +21,6 @@ parser.add_argument(
 
 parser.add_argument(
     "langs", help="The models to use with tesseract. Examples: ckb or ckb+eng.")
-parser.add_argument(
-    "--tessdata", help="Path for tesseract models.")
 
 args = parser.parse_args()
 
@@ -57,11 +55,15 @@ for image in image_paths:
 
     # run tesseract :D
     env = os.environ.copy()
-    if args.tessdata is not None:
-        env["TESSDATA_PREFIX"] = args.tessdata
-
     actual_path = os.path.join(dir_name, os.path.splitext(
         os.path.basename(image))[0] + ".actual")
 
     subprocess.run(["tesseract", "-l", args.langs,
-                    image, actual_path, "txt"], env=env)
+                    image, actual_path, "txt"])
+
+    actual_path = actual_path + ".txt"  # tesseract appends .txt
+
+    # run char accuracy
+    ca_path = os.path.join(dir_name, os.path.splitext(
+        os.path.basename(image))[0] + ".ca.txt")
+    subprocess.run(["accuracy", gt_path, actual_path, ca_path])
