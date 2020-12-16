@@ -27,7 +27,11 @@ Example: `s-1.jpg` and `s-1.txt`
 
 ## How to run tests
 
-**Note:** We only support Linux and Mac because [ocreval](https://github.com/eddieantonio/ocreval) is not available for Windows 
+## Install ocreval
+
+The tests depend on [ocreval](https://github.com/eddieantonio/ocreval) so the commands must be present in PATH. Head over the the official repo for instructions on how to install it. **Note:** We only support Linux and Mac because [ocreval](https://github.com/eddieantonio/ocreval) is not available for Windows.
+
+### Run the python script
 
 ```
 python3 ./src/eval.py source dest languages [--tessdata]
