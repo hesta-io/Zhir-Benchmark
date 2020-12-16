@@ -27,7 +27,21 @@ Example: `s-1.jpg` and `s-1.txt`
 
 ## How to run tests
 
-TBD
+### Run tesseract on all images:
+
+```
+python3 .\src\tess.py source dest languages [--tessdata]
+```
+
+Examples:
+
+```
+python3 ./src/tess.py ./data ./out ckb
+```
+
+```
+python3 ./src/tess.py ./data ./out ckb --tessdata ./tessdata
+```
 
 ## Resources
 
