@@ -47,6 +47,19 @@ python3 ./src/eval.py ./data ./out ckb+eng
 python3 ./src/eval.py ./data ./out ckbLayer1.35234
 ```
 
+This will create these files for each image:
+
+- `image.jpg`: The image.
+- `image.txt`: The ground truth of the image.
+- `image.actual.txt`: Tesseract result of the image.
+- `image.ca.txt`: Character accuracy report for the image.
+- `image.wa.txt`: Word accuracy report for the image.
+
+And will create these two aggregate reports:
+
+- `word_accuracy.txt`: Aggregate word accuracy of all images.
+- `character_accuracy.txt` Aggregate character accuracy of all images.
+
 ## Resources
 
 1. https://github.com/eddieantonio/ocreval
