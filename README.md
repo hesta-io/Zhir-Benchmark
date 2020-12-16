@@ -30,7 +30,7 @@ Example: `s-1.jpg` and `s-1.txt`
 ### Run tesseract on all images:
 
 ```
-python3 .\src\tess.py source dest languages [--tessdata]
+python3 ./src/tess.py source dest languages [--tessdata]
 ```
 
 Examples:
