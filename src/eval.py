@@ -62,7 +62,7 @@ for image in image_paths:
         os.path.basename(image))[0] + ".actual")
 
     subprocess.run(["tesseract", "-l", args.langs,
-                    image, actual_path, "txt"])
+                    image, actual_path, "txt"], stdout=subprocess.DEVNULL)
 
     actual_path = actual_path + ".txt"  # tesseract appends .txt
 
