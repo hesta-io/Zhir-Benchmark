@@ -35,7 +35,10 @@ args.dest = os.path.join(args.dest, args.langs)
 character_accuracy_reports = []
 word_accuracy_reports = []
 
+count = 0
 for image in image_paths:
+    if count > 2:
+        break
     print(image)
     gt_path = os.path.splitext(image)[0] + ".txt"
 
@@ -77,3 +80,17 @@ for image in image_paths:
         os.path.basename(image))[0] + ".wa.txt")
     word_accuracy_reports.append(wa_path)
     subprocess.run(["wordacc", gt_path, actual_path, wa_path])
+
+    count = count + 1
+
+# run character accuracy aggregator (accsum) on all reports
+cf = open(os.path.join(args.dest, 'character_accuracy.txt'), "w")
+character_accuracy_reports.insert(0, 'accsum')
+subprocess.run(args=character_accuracy_reports, stdout=cf)
+cf.close()
+
+# run word accuracy aggregator (wordaccsum) on all reports
+wf = open(os.path.join(args.dest, 'word_accuracy.txt'), "w")
+word_accuracy_reports.insert(0, 'wordaccsum')
+subprocess.run(args=word_accuracy_reports, stdout=wf)
+wf.close()
