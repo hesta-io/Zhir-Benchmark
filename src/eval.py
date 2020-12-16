@@ -32,6 +32,9 @@ for image_type in types:
 
 args.dest = os.path.join(args.dest, args.langs)
 
+character_accuracy_reports = []
+word_accuracy_reports = []
+
 for image in image_paths:
     print(image)
     gt_path = os.path.splitext(image)[0] + ".txt"
@@ -66,4 +69,11 @@ for image in image_paths:
     # run char accuracy
     ca_path = os.path.join(dir_name, os.path.splitext(
         os.path.basename(image))[0] + ".ca.txt")
+    character_accuracy_reports.append(ca_path)
     subprocess.run(["accuracy", gt_path, actual_path, ca_path])
+
+    # run word accuracy
+    wa_path = os.path.join(dir_name, os.path.splitext(
+        os.path.basename(image))[0] + ".wa.txt")
+    word_accuracy_reports.append(wa_path)
+    subprocess.run(["wordacc", gt_path, actual_path, wa_path])
