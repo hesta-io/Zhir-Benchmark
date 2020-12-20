@@ -34,7 +34,7 @@ The tests depend on [ocreval](https://github.com/eddieantonio/ocreval) so the co
 ### Run the python script
 
 ```
-python3 ./src/eval.py source dest languages [--tessdata]
+python3 ./src/eval.py source dest languages [--tessdata] [--dirty]
 ```
 
 Examples:
@@ -47,8 +47,10 @@ python3 ./src/eval.py ./data ./out ckb
 python3 ./src/eval.py ./data ./out ckb+eng
 ```
 
+If you don't want to run ZhirPy on the images:
+
 ```
-python3 ./src/eval.py ./data ./out ckbLayer1.35234
+python3 ./src/eval.py ./data ./out ckb --dirty
 ```
 
 This will create these files for each image:
