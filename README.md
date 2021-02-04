@@ -27,7 +27,13 @@ Example: `s-1.jpg` and `s-1.txt`
 
 ## How to run tests
 
-## Install ocreval
+### Install Tesseract
+You can see the instructions to install tesseract [here](https://tesseract-ocr.github.io/tessdoc/Installation.html).
+
+### Put your model file in TESSDATA_PREFIX
+Tesseract expects model files to be in TESSDATA_PREFIX. TESSDATA_PREFIX depends on the OS and the version of tesseract. For example, on Ubuntu, Tesseract 5-alpha expects the models to be in `/usr/share/tesseract-ocr/5/tessdata/`. Model files have `.traineddata` extension.
+
+### Install ocreval
 
 The tests depend on [ocreval](https://github.com/eddieantonio/ocreval) so the commands must be present in PATH. Head over the the official repo for instructions on how to install it. **Note:** We only support Linux and Mac because [ocreval](https://github.com/eddieantonio/ocreval) is not available for Windows.
 
